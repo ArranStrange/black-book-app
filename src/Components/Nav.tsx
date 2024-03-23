@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 
 interface Props {
@@ -10,6 +11,10 @@ export default function Nav({ onSelectLetter }: Props) {
   const handleLetterClick = (letter: string) => {
     onSelectLetter(letter);
     setSelectedLetter(letter);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   };
 
   useEffect(() => {
@@ -22,14 +27,18 @@ export default function Nav({ onSelectLetter }: Props) {
         <ul className="alphabet">
           {Array.from(Array(26), (_, i) => String.fromCharCode(65 + i)).map(
             (letter, index) => (
-              <li key={index} onClick={() => handleLetterClick(letter)}>
+              <motion.li
+                whileHover={{ scale: 1.5 }}
+                key={index}
+                onClick={() => handleLetterClick(letter)}
+              >
                 {letter}
-              </li>
+              </motion.li>
             )
           )}
         </ul>
 
-        <h1 className="current-letter">{selectedLetter}</h1>
+        <motion.h1 className="current-letter">{selectedLetter}</motion.h1>
       </nav>
     </div>
   );

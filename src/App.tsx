@@ -6,6 +6,7 @@ import FilmGrain from "./film-grain.jpeg";
 import Search from "./Components/Search";
 
 export interface Drink {
+  //defines the types for the object elements response from API call
   idDrink: number;
   strDrink: string;
   strCatagory: string;
@@ -36,23 +37,28 @@ export interface Drink {
 
 function App() {
   const [selectedLetter, setSelectedLetter] = useState("a");
+  //sets state for the selected letter, updates the state when a new letter is clicked. Takes "a" as an initial state.
   const [drinks, setDrinks] = useState<any[]>([]);
-  const [data, setData] = useState<any>(null);
+  const [data, setData] = useState<any>(null); //state for the response for the API call
 
   const handleLetterSelection = (letter: string) => {
-    setSelectedLetter(letter);
-    fetchData(letter);
+    setSelectedLetter(letter); //updates state with the letter clicked
+    fetchData(letter); //updates the API call with the current letter
   };
 
+  //API CALL BASED ON SELECTED LETTER
   const fetchData = async (letter: string) => {
     try {
+      //try contains the the GET API call
       const url = `https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${letter}`;
+      //sets the URL and updates with the letter from the handleLetterSelection function
       const response = await axios.get(url);
-      setData(response.data);
+      //sends HTTP get request using axios
+      setData(response.data); //sets the state for the date from API call
 
       // Check if the drinks array is empty
       if (response.data.drinks.length === 0) {
-        // If drinks array is empty, return null
+        // If drinks array is empty, return null - instead of showing and error
         setDrinks([]); // Set drinks state to empty array to clear any previous data
         return null;
       } else {
@@ -60,10 +66,12 @@ function App() {
         setDrinks(response.data.drinks);
       }
     } catch (error) {
+      //catches any errors and displays error in the console
       console.error("Error fetching the data:", error);
     }
   };
 
+  //API CALL BASED ON TEXT SEARCH
   const handleSearch = async (searchQuery: string) => {
     try {
       const url = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${searchQuery}`;
@@ -71,7 +79,7 @@ function App() {
       setData(response.data);
 
       // Check if the drinks array is empty
-      if (response.data.drinks === null) {
+      if (response.data.drinks.length === 0) {
         // If drinks array is null, return null
         setDrinks([]); // Set drinks state to empty array to clear any previous data
         return null;
