@@ -5,6 +5,7 @@
   font-family: "Chivo", sans-serif;
   text-align: center;
   padding: 20px;
+  overflow: hidden;
 }
 
 .alphabet {
@@ -70,21 +71,25 @@
 
 @media screen and (max-width: 720px) {
   .drinks-container {
-    width: 90%;
+    width: 85%;
     align-items: end;
     flex-direction: column;
+    overflow: hidden;
   }
   .drink-ingredients {
     margin-top: 0;
     margin-left: 0;
-    width: 90%;
+    width: 100%;
   }
   .drink-image-container {
     margin-top: -100px;
-    width: 30%;
+    width: 40%;
   }
   .drinks-instructions {
     height: fit-content;
+  }
+  .current-letter {
+    margin-top: 10px;
   }
   .alphabet {
     left: -30px;

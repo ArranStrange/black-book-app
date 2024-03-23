@@ -55,7 +55,6 @@ function App() {
       const response = await axios.get(url);
       //sends HTTP get request using axios
       setData(response.data); //sets the state for the date from API call
-
       // Check if the drinks array is empty
       if (response.data.drinks.length === 0) {
         // If drinks array is empty, return null - instead of showing and error
@@ -77,7 +76,6 @@ function App() {
       const url = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${searchQuery}`;
       const response = await axios.get(url);
       setData(response.data);
-
       // Check if the drinks array is empty
       if (response.data.drinks.length === 0) {
         // If drinks array is null, return null
