@@ -69,6 +69,21 @@
   filter: saturate(75%) grayscale(30%) sepia(10%);
 }
 
+.dropdown-buttons {
+  z-index: 999;
+}
+.dropdown-search-options {
+  background-color: #262523;
+  z-index: 10;
+  position: fixed;
+  top: 2%;
+  left: 27.5%;
+  height: 200px;
+  width: 400px;
+  border: 1px solid #ecc2c4;
+  border-radius: 10px;
+}
+
 @media screen and (max-width: 720px) {
   .drinks-container {
     width: 85%;

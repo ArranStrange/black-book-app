@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { RxCross2, RxHamburgerMenu } from "react-icons/rx";
 
 interface Props {
   onSearch: (searchQuery: string) => void;
@@ -6,6 +7,11 @@ interface Props {
 
 export default function Search({ onSearch }: Props) {
   const [searchQuery, setSearchQuery] = useState("");
+  const [dropdown, setDropdown] = useState(false);
+
+  const handleDropdown = () => {
+    setDropdown(!dropdown);
+  };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(event.target.value);
@@ -21,14 +27,24 @@ export default function Search({ onSearch }: Props) {
   };
 
   return (
-    <form className="search-bar" onSubmit={handleSubmit}>
-      <input
-        type="search"
-        value={searchQuery}
-        onChange={handleChange}
-        placeholder="Search by name..."
-      />
-      <button type="submit">Search</button>
-    </form>
+    <>
+      <form className="search-bar" onSubmit={handleSubmit}>
+        <input
+          type="search"
+          value={searchQuery}
+          onChange={handleChange}
+          placeholder="Search"
+        />
+        <div className="dropdown-buttons" onClick={handleDropdown}>
+          {dropdown ? <RxCross2 size={35} /> : <RxHamburgerMenu size={35} />}
+        </div>
+
+        {dropdown && (
+          <div className="dropdown-search-options">
+            <input type="radio" />
+          </div>
+        )}
+      </form>
+    </>
   );
 }
