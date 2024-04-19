@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/black-book-app/static/css/main.f980bdbc.css",
+    "main.js": "/black-book-app/static/js/main.781e0e1c.js",
+    "static/js/453.0f3564b4.chunk.js": "/black-book-app/static/js/453.0f3564b4.chunk.js",
+    "static/media/film-grain.jpeg": "/black-book-app/static/media/film-grain.f365f94f8def9204a54e.jpeg",
+    "index.html": "/black-book-app/index.html",
+    "main.f980bdbc.css.map": "/black-book-app/static/css/main.f980bdbc.css.map",
+    "main.781e0e1c.js.map": "/black-book-app/static/js/main.781e0e1c.js.map",
+    "453.0f3564b4.chunk.js.map": "/black-book-app/static/js/453.0f3564b4.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f980bdbc.css",
+    "static/js/main.781e0e1c.js"
+  ]
+}
