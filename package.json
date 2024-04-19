@@ -1,7 +1,8 @@
 {
   "name": "news-api-app",
   "version": "0.1.0",
-  "private": true,
+  "homepage": "https://gitname.github.io/black-book-app",
+  "private": false,
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
@@ -12,6 +13,7 @@
     "@types/react-dom": "^18.0.0",
     "axios": "^1.6.8",
     "framer-motion": "^11.0.20",
+    "gh-pages": "^6.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.0.1",
@@ -21,6 +23,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "predeploy": "run build",
+    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
