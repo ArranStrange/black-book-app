@@ -1,7 +1,7 @@
 {
   "name": "news-api-app",
   "version": "0.1.0",
-  "homepage": "https://gitname.github.io/black-book-app",
+  "homepage": "https://arranstrange.github.io/black-book-app/",
   "private": false,
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
@@ -23,11 +23,11 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "predeploy": "run build",
-    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
