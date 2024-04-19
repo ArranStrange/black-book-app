@@ -8,7 +8,6 @@ interface Props {
 export default function Search({ onSearch }: Props) {
   const [searchQuery, setSearchQuery] = useState("");
   const [dropdown, setDropdown] = useState(false);
-
   const handleDropdown = () => {
     setDropdown(!dropdown);
   };
@@ -41,7 +40,17 @@ export default function Search({ onSearch }: Props) {
 
         {dropdown && (
           <div className="dropdown-search-options">
-            <input type="radio" />
+            <form className="glassware-selection">
+              <input type="checkbox" id="coup" />
+              <span className="checkmark"></span>
+              <label id="coup">Coup</label>
+              <input type="checkbox" id="hurricane" />
+              <label id="hurricane">Hurricane</label>
+              <input type="checkbox" id="highball" />
+              <label id="highball">Hightball</label>
+              <input type="checkbox" id="collins" />
+              <label id="collins">Collins</label>
+            </form>
           </div>
         )}
       </form>

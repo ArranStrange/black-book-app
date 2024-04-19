@@ -33,6 +33,8 @@ export interface Drink {
   strMeasure10: string;
   strDrinkThumb: string;
   strInstructions: string;
+  includes: string;
+  measure: number;
 }
 
 function App() {
@@ -42,8 +44,8 @@ function App() {
   const [data, setData] = useState<any>(null); //state for the response for the API call
 
   const handleLetterSelection = (letter: string) => {
-    setSelectedLetter(letter); //updates state with the letter clicked
-    fetchData(letter); //updates the API call with the current letter
+    setSelectedLetter(letter.toString()); // Convert letter to string explicitly
+    fetchData(letter.toString()); // Convert letter to string explicitly
   };
 
   //API CALL BASED ON SELECTED LETTER
@@ -54,7 +56,7 @@ function App() {
       //sets the URL and updates with the letter from the handleLetterSelection function
       const response = await axios.get(url);
       //sends HTTP get request using axios
-      setData(response.data); //sets the state for the date from API call
+      // setData(response.data); //sets the state for the date from API call (UNUSED)
       // Check if the drinks array is empty
       if (response.data.drinks.length === 0) {
         // If drinks array is empty, return null - instead of showing and error
@@ -99,13 +101,43 @@ function App() {
           <p className="drinks-instructions">{drink.strInstructions}</p>
         </div>
         <div className="drink-ingredients">
-          {[...Array(10)].map((_, i) => (
-            <li key={i}>
-              {drink[`strMeasure${i + 1}` as keyof Drink]} -{" "}
-              {drink[`strIngredient${i + 1}` as keyof Drink]}
-            </li>
-          ))}
+          {[...Array(10)].map((_, i) => {
+            const measure = drink[`strMeasure${i + 1}` as keyof Drink];
+            const ingredient = drink[`strIngredient${i + 1}` as keyof Drink];
+            let displayMeasure = measure;
+
+            if (typeof measure === "string" && measure.includes("oz")) {
+              const ounces = parseFloat(measure as string);
+              const milliliters = ounces * Math.ceil(29.5735);
+              displayMeasure = `${milliliters.toFixed(0)}ml `;
+            } else if (
+              typeof measure === "string" &&
+              measure.includes("shots")
+            ) {
+              const shots = parseFloat(measure);
+              const milliliters = shots * 40.0;
+              displayMeasure = `${milliliters.toFixed(0)}ml `;
+            } else if (
+              typeof measure === "string" &&
+              measure.includes("1/2 shot")
+            ) {
+              const halfShots = parseFloat(measure);
+              const milliliters = halfShots * 20;
+              displayMeasure = `${milliliters.toFixed(0)}ml `;
+            } else if (typeof measure === "string" && measure.includes("cl")) {
+              const centiliters = parseFloat(measure);
+              const milliliters = centiliters * 10;
+              displayMeasure = `${milliliters.toFixed(0)}ml `;
+            }
+
+            return (
+              <li key={i}>
+                {displayMeasure} {ingredient}
+              </li>
+            );
+          })}
         </div>
+
         <div className="drink-image-container">
           <img
             src={drink.strDrinkThumb}

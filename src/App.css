@@ -4,7 +4,7 @@
   color: #ecc2c4;
   font-family: "Chivo", sans-serif;
   text-align: center;
-  padding: 20px;
+  padding: 10px;
   overflow: hidden;
 }
 
@@ -24,14 +24,15 @@
 .drinks-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: end;
   align-items: start;
   padding-top: 75px;
-  padding-left: 25px;
+  padding-left: 70px;
   padding-bottom: 25px;
   border-top: 1px solid #ecc2c4;
-  width: 95%;
+  width: 85%;
   height: fit-content;
+  /* border: green 1px solid; */
 }
 
 .drinks-info {
@@ -40,7 +41,7 @@
   justify-content: start;
   text-wrap: wrap;
   align-items: end;
-  width: 60%;
+  width: 50%;
   text-align: end;
 }
 .drinks-instructions {
@@ -56,9 +57,11 @@
   justify-content: start;
   align-items: start;
   width: 18%;
+  line-height: 1.5rem;
   margin-left: 50px;
   margin-top: -50px;
 }
+
 .drink-image-container {
   margin-top: -50px;
   width: 12%;
@@ -69,6 +72,7 @@
   filter: saturate(75%) grayscale(30%) sepia(10%);
 }
 
+/* DROPDOWN */
 .dropdown-buttons {
   z-index: 999;
 }
@@ -82,6 +86,25 @@
   width: 400px;
   border: 1px solid #ecc2c4;
   border-radius: 10px;
+}
+
+.glassware-selection {
+  display: flex;
+  flex-direction: row;
+  margin-top: 25px;
+  align-items: center;
+  width: 25%;
+}
+.glassware-selection input {
+  width: 20px;
+  color: #262523;
+  background-color: #ecc2c4;
+}
+.checkmark input:checked {
+  height: 20px;
+  width: 20px;
+  color: #262523;
+  background-color: #ecc2c4;
 }
 
 @media screen and (max-width: 720px) {
